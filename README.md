@@ -6,3 +6,12 @@ In order to keep this repo clean and readable, only the code for a single exampl
 
 Please download the imagenet classifiers from [here](https://vub-my.sharepoint.com/:f:/g/personal/fawaz_sammani_vub_be/EqPV08OaZ91AgviAURNkPwsBFhngyAila7ygDaI4k8CnWQ?e=MxiciZ) and place in the directory of this repo
 
+### Additional Libraries
+
+- [clip](https://github.com/openai/CLIP)
+- [OpenCV](https://pypi.org/project/opencv-python/)
+- [kmeans pytorch](https://github.com/subhadarship/kmeans_pytorch)
+- [SimpleCRF](https://github.com/HiLab-git/SimpleCRF)
+- [matplotlib-venn](https://pypi.org/project/matplotlib-venn/)
+
+
