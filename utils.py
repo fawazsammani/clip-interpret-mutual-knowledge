@@ -20,9 +20,6 @@ from sklearn.preprocessing import MinMaxScaler
 def sinkhorn_knopp(C, epsilon, iters=1000):
     """
     Sinkhorn-Knopp algorithm for optimal transport.
-    Note that the two distributions are assumed to be vectors of 1s.
-    See https://michielstock.github.io/posts/2017/2017-11-5-OptimalTransport/ for details
-
     Parameters:
         - C: Cost matrix (torch.Tensor) of shape (m,n). Since it is a simialirty matrix, we need to invert it C = -C (already changed the formulation directly for simplicity)
         - epsilon: entropy regularization parameter: epsilon = (1 / lambda). Higher values leads to more confident / sharp results (less evenly spread)
