@@ -580,26 +580,6 @@ def encode_all_predicted_for_eval(clip_tower, textual_concepts, device):
     return features, lengths
         
 
-def evaluator_classification(features, features_lengths, cls_images, folder2id, evaluator, top1_only = False):
-
-    if top1_only:
-        select_indices = np.concatenate((np.array([0]), np.cumsum(features_lengths)[:-1]))
-        features = features[select_indices]
-        
-    # ground-truth
-    folder = cls_images[0].split('/')[-2]
-    gt_index = folder2id[folder]
-    #print('Ground-Truth: ', imagenet_classes[gt_index])
-
-    # topk predictions
-    probs = evaluator.predict_proba(features.mean(0, keepdim = True).cpu().numpy())
-    top5_indices = (-probs[0]).argsort()[:5]
-    #print('Top-5 Predictions:')
-    #print([imagenet_classes[b] for b in top5_indices])
-    top1_acc = (top5_indices[0] == gt_index).astype('float')
-    top5_acc = np.any(top5_indices == gt_index).astype('float')
-    return top1_acc, top5_acc
-
 def circle_analysis(i_texts, all_descriptors, weight_dissection, class_id, topk_w):
     
     i_indices = [all_descriptors.index(t) for t in i_texts]
