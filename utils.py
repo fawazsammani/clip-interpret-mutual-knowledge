@@ -629,7 +629,6 @@ def get_statistics(deletion_scores):
     return auc
 
 def get_deletion_score(concepts, all_descriptors, weight_dissection, class_id, topk_w):
-    """ keeping the weight dissection concepts constant. One direction is enough"""
     text_score_pairs = zip(concepts[0], concepts[1])
     text_score_pairs = sorted(text_score_pairs, key=lambda x: x[1], reverse=True)
     i_texts = [text for text, _ in text_score_pairs]
@@ -637,10 +636,6 @@ def get_deletion_score(concepts, all_descriptors, weight_dissection, class_id, t
     
     w_values, w_indices = weight_dissection[class_id].topk(topk_w)
     w_values, w_indices = w_values.tolist(), w_indices.tolist()
-#     w_indices = zip(w_indices, w_values)
-#     w_indices = sorted(w_indices, key=lambda x: x[1], reverse=True)
-#     w_indices = [ind for ind, _ in w_indices]
-#     w_texts = [all_descriptors[ind] for ind in w_indices]
 
     sorted_indices_perturb = i_indices.copy()
     perturb_index = len(all_descriptors) + 1
